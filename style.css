@@ -1,0 +1,275 @@
+html{
+    scroll-behavior: smooth;
+}
+
+h2.C1{
+    padding-left: 6.5rem;
+    margin-top: 290px;
+    font-size:45px;
+    font-family: 'Franklin Gothic Medium';
+    font-style: italic;
+
+}
+.hero{
+    height:100vh;
+    background-image:url("https://i.pinimg.com/1200x/e9/25/07/e92507b0f9e05579f384d984c6c06664.jpg");
+    background-size : cover;
+    background-position:center top;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-content{
+    text-align: center;
+    color: rgb(250, 45, 164);
+    font-family:'Courier New', Courier;
+}
+
+
+.bio-item.active{
+    display:block;
+}
+
+body {
+    margin:0;
+    background-color:rgb(224, 207, 249);
+    color:#222;
+
+
+}
+.navbar {
+    background: rgba(255, 255, 255, 0.6); /* blanc semi-transparent */
+    backdrop-filter: blur(10px);          /* flou derrière */
+    -webkit-backdrop-filter: blur(10px);  /* Safari */
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    color:rgb(250, 45, 164);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin: 0;
+    margin-left: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(246, 77, 170);
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #8c3db4c0;
+}
+
+.paragraphe{
+  background: rgba(255, 255, 255, 0.5); /* blanc translucide */
+  padding: 2rem; 
+  border-radius: 16px; /*coins arrondis */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /*effet flottant*/
+  max-width: 250px;
+  margin-top: 10px;
+
+}
+
+.photo{
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem;
+}
+.photo img{
+  width: 220px;
+  height: auto;
+  border-radius: 20px;
+}
+
+.bio-layout{
+    display:flex;
+    align-items: flex-start;
+    gap:3rem;
+    padding: 3rem 4rem;
+}
+.bio-item h3 {
+  margin-top: 0; /* supprime l’espace au-dessus des titres */
+  margin-bottom: 0.5rem; /* juste un petit espacement sous le titre */
+  font-size: 1.5rem;
+}
+.bio-item {
+  display: flex;
+  flex-direction: column; /* texte verticalement */
+  align-items: flex-start; /* tout aligne à gauche */
+  margin-bottom: 1.5rem; /* espacement entre chaque section */
+  display: none; /*cache toutes les sections par défeaut*/
+}
+.bio-nav {
+  display: flex;
+  flex-wrap: wrap; /* permet retour à la ligne si écran petit */
+  gap: 0.8rem;
+  margin-top: 0.5rem 0 1rem 0;
+}
+
+.bio-nav button {
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.bio-nav button:hover { /*éphémère,met en valeur le bouton sur lequel se trouve le curseur*/
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
+}
+.bio-nav button.active{ /*pour mettre en valeur le bouton correspondant à la section actuellement affichée*/
+    background: rgba(255,255,255,0.85);
+    font-weight:bold;
+}
+
+.bio-container{
+    margin-top: 75px;
+}
+
+/*pour la timeline*/
+/* conteneur global */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem 0;
+}
+
+/* ligne verticale centrale */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* chaque point de la timeline */
+.checkpoint {
+  position: relative;
+  width: 50%;
+  padding: 2rem 3rem;
+}
+
+/* alternance gauche / droite */
+.checkpoint:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.checkpoint:nth-child(even) {
+  left: 50%;
+  text-align: left;
+}
+
+/* point sur la frise */
+.checkpoint::before {
+  content: "";
+  position: absolute;
+  top: 2.5rem;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.3);
+}
+
+/* position du point */
+.checkpoint:nth-child(odd)::before {
+  right: -9px;
+}
+
+.checkpoint:nth-child(even)::before {
+  left: -9px;
+}
+
+/* carte de contenu */
+.checkpoint > div {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* titres */
+.checkpoint h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.checkpoint h5 {
+  margin: 0.3rem 0 0.8rem;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+.checkpoint p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.checkpoint ul{
+    list-style:none;
+    text-align: center;
+
+}
+
+.checkpoint::after {
+  content: attr(data-date);
+  position: absolute;
+  top: 2.2rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+/* date côté gauche */
+.checkpoint:nth-child(odd)::after {
+  left: 20px;
+}
+
+/* date côté droit */
+.checkpoint:nth-child(even)::after {
+  right: 20px;
+}
+
+.portfolio-layout {
+  background: rgba(255,255,255,0.5);
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  display:flex;
+  flex-direction:column;
+  gap:1.2rem;
+  margin: 3rem auto;
+}
+
+.portfolio-link a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.7);
+  text-decoration: none;
+  color: black;
+}
+
+
