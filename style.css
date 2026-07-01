@@ -1,61 +1,84 @@
-html{
+html {
     scroll-behavior: smooth;
 }
 
-h2.C1{
+/* --- DESIGN DES TITRES PRINCIPAUX --- */
+h2.C1 {
     padding-left: 6.5rem;
     margin-top: 290px;
-    font-size:45px;
-    font-family: 'Franklin Gothic Medium';
+    font-size: 45px;
+    font-family: 'Franklin Gothic Medium', sans-serif;
     font-style: italic;
-
+    color: rgb(250, 45, 164);
+    position: relative;
+    display: inline-block;
 }
-.hero{
-    height:100vh;
-    background-image:url("https://i.pinimg.com/1200x/e9/25/07/e92507b0f9e05579f384d984c6c06664.jpg");
-    background-size : cover;
-    background-position:center top;
 
+/* Petit détail esthétique : une barre sous le grand titre */
+h2.C1::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 6.5rem;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, rgb(250, 45, 164), #8c3db4c0);
+    border-radius: 2px;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    background-image: url("https://i.pinimg.com/1200x/e9/25/07/e92507b0f9e05579f384d984c6c06664.jpg");
+    background-size: cover;
+    background-position: center top;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
-.hero-content{
+
+/* Effet d'ombrage doux sur le hero pour rendre le texte plus lisible */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(224, 207, 249, 0.15);
+}
+
+.hero-content {
+    position: relative; /* Pour passer au-dessus du voile */
     text-align: center;
     color: rgb(250, 45, 164);
-    font-family:'Courier New', Courier;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0px 2px 10px rgba(255, 255, 255, 0.8); /* Effet néon doux */
 }
 
-
-.bio-item.active{
-    display:block;
-}
-
+/* --- BASES & NAVIGATION --- */
 body {
-    margin:0;
-    background-color:rgb(224, 207, 249);
-    color:#222;
-
-
+    margin: 0;
+    background-color: rgb(224, 207, 249);
+    color: #2b2b2b; /* Légèrement adouci pour le confort visuel */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .navbar {
-    background: rgba(255, 255, 255, 0.6); /* blanc semi-transparent */
-    backdrop-filter: blur(10px);          /* flou derrière */
-    -webkit-backdrop-filter: blur(10px);  /* Safari */
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    
-    padding: 1em 2em;
+    background: rgba(255, 255, 255, 0.45); /* Blanc semi-transparent plus léger */
+    backdrop-filter: blur(12px);          /* Flou légèrement augmenté */
+    -webkit-backdrop-filter: blur(12px);  
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 1.2em 2.5em;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    color:rgb(250, 45, 164);
+    color: rgb(250, 45, 164);
+    box-shadow: 0 4px 20px rgba(140, 61, 180, 0.05);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1em;
+    gap: 1.5rem;
     margin: 0;
     margin-left: auto;
 }
@@ -63,213 +86,309 @@ body {
 .nav-links a {
     text-decoration: none;
     color: rgb(246, 77, 170);
-    transition: color 0.3s;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Effet de soulignement animé au survol des liens de navigation */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #8c3db4c0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
 }
 
 .nav-links a:hover {
     color: #8c3db4c0;
 }
 
-.paragraphe{
-  background: rgba(255, 255, 255, 0.5); /* blanc translucide */
-  padding: 2rem; 
-  border-radius: 16px; /*coins arrondis */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /*effet flottant*/
-  max-width: 250px;
-  margin-top: 10px;
-
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
-.photo{
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  padding: 4rem;
-}
-.photo img{
-  width: 220px;
-  height: auto;
-  border-radius: 20px;
+/* --- CARTES & PARAGRAPHES --- */
+.paragraphe {
+    background: rgba(255, 255, 255, 0.55);
+    padding: 2rem; 
+    border-radius: 16px; 
+    box-shadow: 0 10px 30px rgba(140, 61, 180, 0.1); /* Ombre teintée violette */
+    max-width: 250px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
 }
 
-.bio-layout{
-    display:flex;
+.paragraphe:hover {
+    transform: translateY(-4px); /* Discret effet de lévitation au survol */
+}
+
+/* --- PHOTOS & IMAGES --- */
+.photo {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 4rem;
+}
+
+.photo img {
+    width: 220px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(140, 61, 180, 0.15); /* Ombre stylisée sous la photo */
+    border: 4px solid rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.photo img:hover {
+    transform: scale(1.03); /* Zoom très discret au survol */
+}
+
+/* --- SECTION BIOGRAPHIE --- */
+.bio-layout {
+    display: flex;
     align-items: flex-start;
-    gap:3rem;
+    gap: 3rem;
     padding: 3rem 4rem;
 }
-.bio-item h3 {
-  margin-top: 0; /* supprime l’espace au-dessus des titres */
-  margin-bottom: 0.5rem; /* juste un petit espacement sous le titre */
-  font-size: 1.5rem;
-}
-.bio-item {
-  display: flex;
-  flex-direction: column; /* texte verticalement */
-  align-items: flex-start; /* tout aligne à gauche */
-  margin-bottom: 1.5rem; /* espacement entre chaque section */
-  display: none; /*cache toutes les sections par défeaut*/
-}
-.bio-nav {
-  display: flex;
-  flex-wrap: wrap; /* permet retour à la ligne si écran petit */
-  gap: 0.8rem;
-  margin-top: 0.5rem 0 1rem 0;
-}
 
-.bio-nav button {
-  background: rgba(255, 255, 255, 0.6);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.bio-nav button:hover { /*éphémère,met en valeur le bouton sur lequel se trouve le curseur*/
-  background: rgba(255, 255, 255, 0.85);
-  transform: translateY(-2px);
-}
-.bio-nav button.active{ /*pour mettre en valeur le bouton correspondant à la section actuellement affichée*/
-    background: rgba(255,255,255,0.85);
-    font-weight:bold;
-}
-
-.bio-container{
+.bio-container {
     margin-top: 75px;
 }
 
-/*pour la timeline*/
-/* conteneur global */
+.bio-item {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-bottom: 1.5rem; 
+    display: none; 
+}
+
+.bio-item.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out; /* Animation fluide à l'affichage */
+}
+
+.bio-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+    font-size: 1.6rem;
+    color: #6a2194; /* Couleur plus contrastée et élégante pour les sous-titres */
+    font-weight: 600;
+}
+
+.bio-nav {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 0.8rem;
+    margin: 0.5rem 0 1rem 0;
+}
+
+/* Amélioration visuelle des boutons d'onglets */
+.bio-nav button {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    color: #4a4a4a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.bio-nav button:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: rgb(246, 77, 170);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(140, 61, 180, 0.1);
+}
+
+.bio-nav button.active {
+    background: rgb(246, 77, 170); /* Devient rose vif quand actif */
+    color: white;                  /* Texte blanc pour le contraste */
+    font-weight: 600;
+    border-color: rgb(246, 77, 170);
+    box-shadow: 0 6px 15px rgba(246, 77, 170, 0.3);
+}
+
+/* --- DESIGN DE LA TIMELINE (FRISE) --- */
 .timeline {
-  position: relative;
-  max-width: 800px;
-  margin: 4rem auto;
-  padding: 2rem 0;
+    position: relative;
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem 0;
 }
 
-/* ligne verticale centrale */
 .timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  width: 3px;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.6);
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
 }
 
-/* chaque point de la timeline */
 .checkpoint {
-  position: relative;
-  width: 50%;
-  padding: 2rem 3rem;
+    position: relative;
+    width: 50%;
+    padding: 2rem 3rem;
+    box-sizing: border-box;
 }
 
-/* alternance gauche / droite */
 .checkpoint:nth-child(odd) {
-  left: 0;
-  text-align: right;
+    left: 0;
+    text-align: right;
 }
 
 .checkpoint:nth-child(even) {
-  left: 50%;
-  text-align: left;
+    left: 50%;
+    text-align: left;
 }
 
-/* point sur la frise */
+/* Point central de la frise */
 .checkpoint::before {
-  content: "";
-  position: absolute;
-  top: 2.5rem;
-  width: 18px;
-  height: 18px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(255,255,255,0.3);
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    width: 14px;
+    height: 14px;
+    background: rgb(246, 77, 170); /* Assorti à ton thème */
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(246, 77, 170, 0.2);
+    z-index: 2;
+    transition: transform 0.3s ease;
 }
 
-/* position du point */
-.checkpoint:nth-child(odd)::before {
-  right: -9px;
+.checkpoint:hover::before {
+    transform: scale(1.3); /* Effet d'activation au survol de la carte */
 }
 
-.checkpoint:nth-child(even)::before {
-  left: -9px;
-}
+.checkpoint:nth-child(odd)::before { right: -10px; }
+.checkpoint:nth-child(even)::before { left: -10px; }
 
-/* carte de contenu */
+/* Cartes de contenu de la frise */
 .checkpoint > div {
-  background: rgba(255, 255, 255, 0.5);
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 0.55);
+    padding: 1.8rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(140, 61, 180, 0.08);
+    transition: all 0.3s ease;
 }
 
-/* titres */
+.checkpoint > div:hover {
+    background: rgba(255, 255, 255, 0.75);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(140, 61, 180, 0.12);
+}
+
 .checkpoint h3 {
-  margin-top: 0;
-  font-size: 1.2rem;
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: #6a2194;
 }
 
 .checkpoint h5 {
-  margin: 0.3rem 0 0.8rem;
-  font-weight: normal;
-  opacity: 0.8;
+    margin: 0.3rem 0 0.8rem;
+    font-weight: 600;
+    color: rgb(246, 77, 170); /* Date/lieu mis en valeur en rose */
+    font-size: 0.9rem;
 }
 
 .checkpoint p {
-  margin: 0;
-  line-height: 1.5;
+    margin: 0;
+    line-height: 1.6;
+    color: #444;
 }
 
-.checkpoint ul{
-    list-style:none;
+.checkpoint ul {
+    list-style: none;
     text-align: center;
-
+    padding: 0;
+    margin: 0.5rem 0 0;
 }
 
+/* Positionnement esthétique des attributs date */
 .checkpoint::after {
-  content: attr(data-date);
-  position: absolute;
-  top: 2.2rem;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  opacity: 0.8;
+    content: attr(data-date);
+    position: absolute;
+    top: 2.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #6a2194;
+    white-space: nowrap;
 }
 
-/* date côté gauche */
-.checkpoint:nth-child(odd)::after {
-  left: 20px;
-}
+.checkpoint:nth-child(odd)::after { left: calc(100% + 25px); text-align: left; }
+.checkpoint:nth-child(even)::after { right: calc(100% + 25px); text-align: right; }
 
-/* date côté droit */
-.checkpoint:nth-child(even)::after {
-  right: 20px;
-}
-
+/* --- CARTES PROJETS (PORTFOLIO) --- */
 .portfolio-layout {
-  background: rgba(255,255,255,0.5);
-  padding: 2rem 3rem;
-  border-radius: 16px;
-  max-width: 500px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  display:flex;
-  flex-direction:column;
-  gap:1.2rem;
-  margin: 3rem auto;
+    background: rgba(255, 255, 255, 0.55);
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 12px 35px rgba(140, 61, 180, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin: 3rem auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.portfolio-layout:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(140, 61, 180, 0.14);
+}
+
+.portfolio-layout h3 {
+    margin: 0;
+    color: #6a2194;
+    font-size: 1.5rem;
+}
+
+/* Bouton interactif "Voir le code / Visiter le site" */
 .portfolio-link a {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.7);
-  text-decoration: none;
-  color: black;
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    background: white;
+    border: 1px solid rgba(246, 77, 170, 0.3);
+    text-decoration: none;
+    color: rgb(246, 77, 170);
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(246, 77, 170, 0.1);
+    transition: all 0.3s ease;
 }
 
+.portfolio-link a:hover {
+    background: rgb(246, 77, 170);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(246, 77, 170, 0.3);
+}
 
+/* --- ANIMATIONS TRÈS FLUIDES --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
